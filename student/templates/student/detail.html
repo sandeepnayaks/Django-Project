@@ -1,0 +1,112 @@
+{% extends 'student/base.html' %}
+
+{% load staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'student\detail.css' %}">
+{% endblock %}
+
+{% block javascript %}
+<script src="{% static 'js\smoothScroll.js' %}"></script>
+{% endblock %}
+
+{% block title%}{{ stu }}{% endblock %}
+
+{% block activestudent %}active{% endblock %}
+
+{% block body %}
+	<div class="container-fluid" style="padding-bottom: 100px;">
+		<div class="m-4">
+			<h1>{{ stu }}</h1>
+		</div>
+        <hr>
+		<div class="row margin-top-20">
+			<!--<div class="col-md-2">-->
+				<!--<ul class="side-menu-items">-->
+					<!--<li class="sliding-u-l-r-l">-->
+						<!--<a href="#Information">General Information</a>-->
+					<!--</li>-->
+					<!--<li class="sliding-u-l-r-l">-->
+						<!--<a href="#Contact">Emergency Contact</a>-->
+					<!--</li>-->
+					<!--<li class="sliding-u-l-r-l">-->
+						<!--<a href="#Attendance">Attendance</a>-->
+					<!--</li>-->
+					<!--<li class="sliding-u-l-r-l">-->
+						<!--<a href="#Progress">Progress</a>-->
+					<!--</li>-->
+					<!--<li class="sliding-u-l-r-l">-->
+						<!--<a href="#Fees">Fees</a>-->
+					<!--</li>-->
+				<!--</ul>-->
+			<!--</div>-->
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-6" id="Information">
+						<div class="card">
+							<div class="card-header">
+								<i class="fas fa-address-card"></i>
+								General Information
+							</div>
+							<div class="card-body">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">
+										<span style="font-weight:bold">Address</span>: {{ stu.address }}</li>
+									<li class="list-group-item">
+										<span style="font-weight:bold">Postal Code</span>: {{ stu.postal_code }}</li>
+									</li>
+									<li class="list-group-item">
+										<span style="font-weight:bold">Date of Birth</span>: {{ stu.date_of_birth }}</li>
+									</li>
+									<li class="list-group-item">
+										<span style="font-weight:bold">Date of Joining</span>: {{ stu.date_of_joining }}</li>
+									</li>
+									<li class="list-group-item">
+										<span style="font-weight:bold">Phone Number</span>: {{ stu.phone_number }}</li>
+									</li>
+									<li class="list-group-item">
+										<span style="font-weight:bold">Rank</span>: {{ stu.rank }}</li>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6" id="Contact">
+						<div class="card">
+							<div class="card-header">
+								<i class="fas fa-address-card"></i>
+								Emergency Contact 
+							</div>
+							<div class="card-body">
+								{% if guardian %}
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">
+										<span style="font-weight:bold">Name</span>: {{ guardian }}</li>
+									<li class="list-group-item">
+										<span style="font-weight:bold">Address</span>: {{ guardian.address }}</li>
+									</li>
+									<li class="list-group-item">
+										<span style="font-weight:bold">Postal Code</span>: {{ guardian.postal_code }}</li>
+									</li>
+									<li class="list-group-item">
+										<span style="font-weight:bold">Phone Number</span>: {{ guardian.phone_number }}</li>
+									</li>
+									<li class="list-group-item">
+										<span style="font-weight:bold">Relation</span>: {{ guardian.relation }}</li>
+									</li>
+								</ul>
+								{% else %}
+								<p> There is no Emergency Contact Added. </p>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+                    <hr>
+					
+                    <hr>
+					
+				</div>
+			</div>
+		</div>
+    </div>
+{% endblock %}
